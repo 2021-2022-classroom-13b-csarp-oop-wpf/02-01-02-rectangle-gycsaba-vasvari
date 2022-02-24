@@ -15,5 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RectangleProject\RectangleProject\RectangleProject.csproj" />
   </ItemGroup>
 </Project>

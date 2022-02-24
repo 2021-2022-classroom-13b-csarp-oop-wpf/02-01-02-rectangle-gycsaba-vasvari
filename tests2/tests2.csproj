@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CircleProject\CircleProject.csproj" />
+    <ProjectReference Include="..\RectangleProject\RectangleProject\RectangleProject.csproj" />
   </ItemGroup>
 </Project>

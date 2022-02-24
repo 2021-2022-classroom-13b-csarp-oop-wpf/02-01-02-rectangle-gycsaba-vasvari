@@ -6,49 +6,79 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+using RectangleProject;
+using RectangleProject.Models;
 
-using CircleProject;
-using CircleProject.Models;
-
-namespace CircleProject.Tests
+namespace RectangleProject.Tests
 {
     [TestClass()]
     public class Tests2
     {
         [TestMethod()]
-        public void TestCircle()
+        public void TestRectangleException()
         {
-            Circle c1 = new Circle(2);
-            Assert.ThrowsException<ExceptionCircleRadiusNegativOrZero>(() => c1.Radius=-2 );
+            Rectangle r = new Rectangle(4.25, 7.34);
+            Assert.ThrowsException<RectangleSideIsNullOrZero>(() => r.SideA=-2 );
+            Assert.ThrowsException<RectangleSideIsNullOrZero>(() => r.SideB =-2);
+            Assert.ThrowsException<RectangleSideIsNullOrZero>(() => r.SideA = 0);
+            Assert.ThrowsException<RectangleSideIsNullOrZero>(() => r.SideB = 0);
 
             try
             {
-                Circle c2 = new Circle(-2);
+                Rectangle r1 = new Rectangle(-4.25, 7.34);
             }
-            catch (ExceptionCircleRadiusNegativOrZero)
+            catch (RectangleSideIsNullOrZero)
             {
                 return;
             }
             catch (Exception e)
             {
-                Assert.Fail("Circle konstruktora nem a megfelelő kivételt dobja!\n"+e.Message);
+                Assert.Fail("A négyzet konstruktora nem a megfelelő kivételt dobja!\n"+e.Message);
             }
-            Assert.Fail("A Circle konstruktora negatív sugár esetén nem dob kivételt!");
-
+            Assert.Fail("A négyzet konstruktora negatív oldal esetén nem dob kivételt!");
 
             try
             {
-                Circle c2 = new Circle(0);
+                Rectangle r1 = new Rectangle(4.25, -7.34);
             }
-            catch (ExceptionCircleRadiusNegativOrZero)
+            catch (RectangleSideIsNullOrZero)
             {
                 return;
             }
             catch (Exception e)
             {
-                Assert.Fail("Circle konstruktora nem a megfelelő kivételt dobja!\n" + e.Message);
+                Assert.Fail("A négyzet konstruktora nem a megfelelő kivételt dobja!\n" + e.Message);
             }
-            Assert.Fail("A Circle konstruktora nulla sugarú kör esetén nem dob kivételt!");
+            Assert.Fail("A négyzet konstruktora negatív oldal esetén nem dob kivételt!");
+
+
+            try
+            {
+                Rectangle r1 = new Rectangle(0, 7.34);
+            }
+            catch (RectangleSideIsNullOrZero)
+            {
+                return;
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("A négyzet konstruktora nem a megfelelő kivételt dobja!\n" + e.Message);
+            }
+            Assert.Fail("A négyzet konstruktora nulla oldalhossz esetén nem dob kivételt!");
+
+            try
+            {
+                Rectangle r1 = new Rectangle(1, 0);
+            }
+            catch (RectangleSideIsNullOrZero)
+            {
+                return;
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("A négyzet konstruktora nem a megfelelő kivételt dobja!\n" + e.Message);
+            }
+            Assert.Fail("A négyzet konstruktora nulla oldalhossz esetén nem dob kivételt!");
         }
     }
 }
