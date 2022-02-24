@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +8,14 @@ using System.IO;
 
 using RectangleProject.Models;
 
-namespace RectangleProject.Tests 
+namespace RectangleProject.Tests
 {
-
-
-
     [TestClass()]
     public class Tests
     {
-
+        [TestMethod()]
+        public void Test()
+        {
             Rectangle r = new Rectangle(4.25,7.34);
             double expectedSideA = 4.25;
             double actualSideA = r.SideA;
@@ -59,6 +58,7 @@ namespace RectangleProject.Tests
             Assert.IsTrue(haveSideB, "A ToString metódus nem jeleníti meg az egyik oldalt");
             Assert.IsTrue(haveParimeter, "A ToString metódus nem jeleníti meg a kerületet két tizedes jegy pontossággal!");
             Assert.IsTrue(haveArea, "A ToString metódus nem jeleníti meg a területet két tizedes jegy pontosságal.");
+
         }
     }
 }
